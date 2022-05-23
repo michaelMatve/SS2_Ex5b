@@ -33,10 +33,10 @@ namespace ariel{
         OrgChart(OrgChart& temp_tree);
 
         ~OrgChart();
+
         //recursive function to remove all nodes
         void distractor_helper(ONode* curr);
-        //move constractor
-        // OrgChart(OrgChart&& temp_tree) noexcept;
+
 
         //dipp copy
         OrgChart& operator= (const OrgChart& temp_tree);
@@ -44,9 +44,6 @@ namespace ariel{
         //copy helper 
         void copy_helper (ONode* new_node, ONode* old_node);
         
-        // move 
-        // OrgChart& operator= (const OrgChart&& temp_tree) noexcept;
-
         OrgChart& add_root(std::string data);
 
         //add children

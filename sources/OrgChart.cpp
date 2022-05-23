@@ -24,6 +24,7 @@ namespace ariel{
             *this = temp_tree;
         }
     }
+   
     //distractor
     OrgChart::~OrgChart()
     {
@@ -46,18 +47,15 @@ namespace ariel{
         }
     }
     
-    // OrgChart::OrgChart(OrgChart&& temp_tree) noexcept
-    // {
-    //     *this = temp_tree;
-    // }
-
     //operators for dip copy
     OrgChart& OrgChart::operator= (const OrgChart& temp_tree)
     {
+        //check that they are not the same 
         if(this == &temp_tree)
         {
             return *this;
         }
+        //check the root is not null
         if(temp_tree.root == nullptr)
         {
             this->root = nullptr;
@@ -69,16 +67,17 @@ namespace ariel{
         }
         return *this;
     }
+    
     void OrgChart::copy_helper (ONode* new_node, ONode* old_node)
     {
         if(old_node == nullptr)
         {
             return;
         }
+        //run the function on all the node children firest on his child then on the brothers
         if(old_node->child != nullptr)
         {
             new_node->child = new ONode(old_node->data);
-            // new_node->child->father = old_node;
             ONode* new_children = new_node->child;
             ONode* old_children = old_node->child;
             while (old_children!=nullptr)
@@ -213,7 +212,7 @@ namespace ariel{
 
     OrgChart::Iterator_level_order OrgChart::begin_level_order()
     {
-        //return the start of the itrshion and set a vector with the true order
+        //return the start of the itrshion
         if(this->root == nullptr)
         {
             throw std::invalid_argument("null ptr");
@@ -236,7 +235,7 @@ namespace ariel{
         {
             throw std::invalid_argument("null ptr");
         }
-        //return the start of the itrshion and set a vector with the true order
+        //return the start of the itrshion
         return Iterator_reverse_order(this->root).full_stack();
     }
 
@@ -255,7 +254,7 @@ namespace ariel{
         {
             throw std::invalid_argument("null ptr");
         }
-        //return the start of the itrshion and set a vector with the true order
+        //return the start of the itrshion
         return Iterator_preorder(this->root);
     }
 
