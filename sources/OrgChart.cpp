@@ -168,43 +168,44 @@ namespace ariel{
         My_output<<"-----------------start----------"<<"\n";
         //counter to remember in what level we are
         int colums =0;
-
-        OrgChart::ONode* curr_node = tree.root;
-        //add the root to the my_output
-        My_output<<" ("<<colums<< ") "<< curr_node->data;
-        //run on all the nodes in predetor order and print them in to my output
-       while(curr_node!= nullptr)
+        if(tree.root!=nullptr)
         {
-            //run to the last level
-            while(curr_node->child != nullptr)
+            OrgChart::ONode* curr_node = tree.root;
+            //add the root to the my_output
+            My_output<<" ("<<colums<< ") "<< curr_node->data;
+            //run on all the nodes in predetor order and print them in to my output
+            while(curr_node!= nullptr)
             {
-                curr_node= curr_node->child;
-                ++colums;
-                My_output<< " -> " <<" ("<<colums<< ") "<<curr_node->data;
-            }
-            //after finish go up to the prvius level and check if there is brother
-            while(curr_node->brother == nullptr)
-            {
-                curr_node = curr_node->father;
-                //if we get to null stop
-                if(curr_node == nullptr)
+                //run to the last level
+                while(curr_node->child != nullptr)
                 {
-                    break;
+                    curr_node= curr_node->child;
+                    ++colums;
+                    My_output<< " -> " <<" ("<<colums<< ") "<<curr_node->data;
                 }
-                --colums;
-            }
-            if(curr_node != nullptr)
-            {
-                curr_node = curr_node->brother;
-                My_output<< "\n";
-                for(ulong i= 0 ; i<colums ; i++)
+                //after finish go up to the prvius level and check if there is brother
+                while(curr_node->brother == nullptr)
                 {
-                   My_output<<" \t  ";  
+                    curr_node = curr_node->father;
+                    //if we get to null stop
+                    if(curr_node == nullptr)
+                    {
+                        break;
+                    }
+                    --colums;
                 }
-                My_output<< " -> " <<" ("<<colums<< ") "<<curr_node->data;
+                if(curr_node != nullptr)
+                {
+                    curr_node = curr_node->brother;
+                    My_output<< "\n";
+                    for(ulong i= 0 ; i<colums ; i++)
+                    {
+                       My_output<<" \t  ";  
+                    }
+                    My_output<< " -> " <<" ("<<colums<< ") "<<curr_node->data;
+                }
             }
         }
-
         My_output<<"\n"<<"-----------------end----------"<<std::endl;
         return My_output;
     }
