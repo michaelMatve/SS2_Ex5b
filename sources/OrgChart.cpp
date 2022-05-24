@@ -97,7 +97,7 @@ namespace ariel{
     //change root
     OrgChart& OrgChart::add_root(std::string data)
     {
-        if(data.empty() || data == "\n"|| data == "\t")
+        if(data.empty() || data == "\n"|| data == "\t" || data == "\r")
         {
             throw std::invalid_argument("cant get that string");
         }
@@ -114,7 +114,7 @@ namespace ariel{
     //add children
     OrgChart& OrgChart::add_sub(const std::string& father, std::string son)
     {
-        if(son.empty() || son == "\n"|| son == "\t")
+        if(son.empty() || son == "\n"|| son == "\t" || son == "\r")
         {
             throw std::invalid_argument("cant get that string");
         }

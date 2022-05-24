@@ -32,6 +32,10 @@ namespace ariel{
         //copy constractor
         OrgChart(OrgChart& temp_tree);
 
+        //move func
+        OrgChart(OrgChart&& temp_tree);
+        OrgChart& operator= (OrgChart&& temp_tree) noexcept;
+
         ~OrgChart();
 
         //recursive function to remove all nodes
