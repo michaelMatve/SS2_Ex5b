@@ -33,7 +33,7 @@ namespace ariel{
         OrgChart(OrgChart& temp_tree);
 
         //move func
-        OrgChart(OrgChart&& temp_tree);
+        OrgChart(OrgChart&& temp_tree) noexcept;
         OrgChart& operator= (OrgChart&& temp_tree) noexcept;
 
         ~OrgChart();

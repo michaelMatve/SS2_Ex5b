@@ -147,7 +147,7 @@ namespace ariel{
         }
         return *this;
     }
-
+    //find if exist if do return pointer
     OrgChart::ONode* OrgChart::find(const std::string& data)
     {
         //run on the level order operator and check if the data is the same 
